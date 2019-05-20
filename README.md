@@ -9,9 +9,9 @@
 ## jxwaf实例
 简单的jxwaf实例：
 ```
-docker run  --env JXWAF_API_KEY="<you api key>"   --env JXWAF_API_PASSWD="<you api password>"    jxwaf
+docker run -p80:80 --env JXWAF_API_KEY="<you api key>" --env JXWAF_API_PASSWD="<you api password>"  jxwaf
 ```
 jxwaf最佳实践：
 ```
- docker run  --net=host --env JXWAF_API_KEY="<you api key>"   --env JXWAF_API_PASSWD="<you api password>"    --restart=always jxwaf 
+ docker run  --net=host -p80:80 --env JXWAF_API_KEY="<you api key>"   --env JXWAF_API_PASSWD="<you api password>"    --restart=always jxwaf 
 ```
