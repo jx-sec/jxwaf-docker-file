@@ -13,5 +13,5 @@ docker run -p80:80 --env JXWAF_API_KEY="<you api key>" --env JXWAF_API_PASSWD="<
 ```
 jxwaf最佳实践：
 ```
- docker run  --net=host -p80:80 --env JXWAF_API_KEY="<you api key>"   --env JXWAF_API_PASSWD="<you api password>"    --restart=always jxwaf 
+ docker run  --net=host -p80:80 --env JXWAF_API_KEY="<you api key>"   --env JXWAF_API_PASSWD="<you api password>" --env WAF_UPDATE_WEBSITE=http://update2.jxwaf.com/waf_update   --restart=always jxwaf 
 ```
