@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:centos7.4.1708
 
 RUN yum update -y && yum install -y epel-release
 RUN yum install -y python-devel  python-pip git  gcc make mysql mysql-devel
