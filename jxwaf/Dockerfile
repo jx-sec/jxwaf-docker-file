@@ -1,4 +1,4 @@
-FROM centos:7.4
+FROM centos7.4.1708
 
 #USER root
 RUN cd /tmp  \
