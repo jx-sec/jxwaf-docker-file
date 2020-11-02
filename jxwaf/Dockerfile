@@ -5,8 +5,8 @@ RUN cd /tmp  \
     && yum install -y epel-release pcre-devel openssl-devel gcc cmake make  lua-devel  automak git \
     && git clone https://github.com/jx-sec/jxwaf.git  \
     && cd jxwaf \
-    && tar zxvf openresty-1.13.6.2.tar.gz \
-    && cd openresty-1.13.6.2 \
+    && tar zxvf openresty-1.15.8.3.tar.gz \
+    && cd openresty-1.15.8.3.tar.gz \
     && ./configure --prefix=/opt/jxwaf --with-http_v2_module --with-http_stub_status_module && gmake && gmake install \
     && mv /opt/jxwaf/nginx/conf/nginx.conf  /opt/jxwaf/nginx/conf/nginx.conf.bak \
     && cp ../conf/nginx.conf /opt/jxwaf/nginx/conf/ \
