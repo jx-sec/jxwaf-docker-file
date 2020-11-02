@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:7.4
 
 #USER root
 RUN cd /tmp  \
@@ -19,8 +19,8 @@ RUN cd /tmp  \
     && /opt/jxwaf/nginx/sbin/nginx -t
 
 
-CMD sed -i 's/"waf_api_key": ""/"waf_api_key": "'$JXWAF_API_KEY'"/'  /opt/jxwaf/nginx/conf/jxwaf/jxwaf_config.json \
-    && sed -i 's/"waf_api_password": ""/"waf_api_password": "'$JXWAF_API_PASSWD'"/'    /opt/jxwaf/nginx/conf/jxwaf/jxwaf_config.json  \
+CMD sed -i 's/"waf_api_key": "5fc335bc-d778-4d90-ab3f-ece36bad4a24"/"waf_api_key": "'$JXWAF_API_KEY'"/'  /opt/jxwaf/nginx/conf/jxwaf/jxwaf_config.json \
+    && sed -i 's/"waf_api_password": "6bace0ac-ddca-412f-b768-81407044ea0c"/"waf_api_password": "'$JXWAF_API_PASSWD'"/'    /opt/jxwaf/nginx/conf/jxwaf/jxwaf_config.json  \
     #&& sed -i 's#"waf_update_website": "http://update2.jxwaf.com/waf_update"#"waf_update_website": "'$WAF_UPDATE_WEBSITE'"#'    /opt/jxwaf/nginx/conf/jxwaf/jxwaf_config.json  \
     && sed -i 's#http://update2.jxwaf.com#'$WAF_UPDATE_WEBSITE'#g'    /opt/jxwaf/nginx/conf/jxwaf/jxwaf_config.json \
     && server_name=`ip addr | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'|grep -v 127.0.0.1|head -1`\
