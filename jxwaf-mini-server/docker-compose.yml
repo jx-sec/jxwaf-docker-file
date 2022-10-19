@@ -2,7 +2,7 @@ version: "3.9"
 services:
 
   jxmini-server:
-    image: "jxwaf/jxwaf-mini-server:v2022-RC3"
+    image: "jxwaf/jxwaf-mini-server:latest"
     ports:
       - "8088:80"
     environment:
