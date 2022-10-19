@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+
+  jxmini-server:
+    image: "jxwaf/jxwaf-mini-server:v2022-RC3"
+    ports:
+      - "8088:80"
+    environment:
+      DBUSER: root
+      DBNAME: jxwaf
+      DBPASSWORD: jxwaf
+      DBHOST: mariadb
+      DBPORT: 3306
+    restart: always
+
+  mariadb:
+    image: "mariadb:latest"
+    environment:
+      MARIADB_ROOT_PASSWORD: jxwaf
+      MARIADB_DATABASE: jxwaf
+    restart: always
+
+
