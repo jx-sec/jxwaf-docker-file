@@ -19,7 +19,7 @@ docker compose  up -d
 按照上一步“jxwaf管理中心实例”快速启动后，假设管理中心 IP 为 10.0.0.1,则打开网址 http://10.0.0.1:8088 进行注册,注册完后登录账号,在 系统管理 -> 基础配置 页面获取"API_KEY"和"API_PASSWORD"
 #### 快速启动
 ```
-docker run  -d  --rm    -p 80:80  -p 443:443 -e JXWAF_SERVER="http://10.0.8.1:8080" -e WAF_API_KEY=19a0953e-1b64-42c3-a4cb-a2c5d4b88285 -e WAF_API_PASSWORD=595e8383-ec7e-4f31-9b98-b55964028763  jxwaf/jxwaf:v2022-RC3
+docker run  -d  --rm    -p 80:80  -p 443:443 -e JXWAF_SERVER="http://10.0.8.1:8088" -e WAF_API_KEY=19a0953e-1b64-42c3-a4cb-a2c5d4b88285 -e WAF_API_PASSWORD=595e8383-ec7e-4f31-9b98-b55964028763  jxwaf/jxwaf:v2022-RC3
 ```
 #### 参数说明
 |  参数  | 说明 |
