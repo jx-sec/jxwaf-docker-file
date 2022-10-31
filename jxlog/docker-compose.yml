@@ -9,8 +9,8 @@ services:
       CLICKHOUSE_USER: jxlog
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
       CLICKHOUSE_PASSWORD: jxlog
-    volumes:
-      - clickhousedata:/var/lib/clickhouse
+#     volumes:
+#       - clickhousedata:/var/lib/clickhouse
     restart: always
 
   jxlog:
@@ -28,5 +28,5 @@ services:
       clickhouse:
         condition: service_started  
     restart: always
-volumes:
-  clickhousedata:
+# volumes:
+#   clickhousedata:
