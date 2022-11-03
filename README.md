@@ -5,6 +5,11 @@
 wget https://raw.githubusercontent.com/jx-sec/jxwaf-docker-file/master/jxwaf-mini-server/docker-compose.yml
 docker compose  up -d 
 ```
+#### mini server + jxlog 快速启动
+```
+wget https://raw.githubusercontent.com/jx-sec/jxwaf-docker-file/master/docker-compose.yml
+docker compose  up -d 
+```
 #### 参数说明
 |  参数  | 说明 |
 |  ----  | ----  |
