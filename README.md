@@ -1,5 +1,5 @@
 ## jxwaf docker 部署
-### jxwaf管理中心实例
+### jxwaf mini server实例
 #### 快速启动
 ```
 wget https://raw.githubusercontent.com/jx-sec/jxwaf-docker-file/master/jxwaf-mini-server/docker-compose.yml
