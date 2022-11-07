@@ -33,4 +33,4 @@ docker run  -d  --rm    -p 80:80  -p 443:443 -e JXWAF_SERVER="http://10.0.8.1:80
 |WAF_API_KEY|管理中心API_KEY，示例：19a0953e-1b64-42c3-a4cb-a2c5d4b88285|
 |WAF_API_PASSWORD|管理中心API_PASSWORD，示例：595e8383-ec7e-4f31-9b98-b55964028763|
 |  HTTP_PORT | 自定义http端口，默认：80 |
-|  HTTPs_PORT | 自定义http端口，默认：443 |
+|  HTTPs_PORT | 自定义https端口，默认：443 |
