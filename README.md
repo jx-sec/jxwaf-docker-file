@@ -26,6 +26,10 @@ docker compose  up -d
 ```
 docker run  -d  --rm    -p 80:80  -p 443:443 -e JXWAF_SERVER="http://10.0.8.1:8088" -e WAF_API_KEY=19a0953e-1b64-42c3-a4cb-a2c5d4b88285 -e WAF_API_PASSWORD=595e8383-ec7e-4f31-9b98-b55964028763  jxwaf/jxwaf:v2022-RC3
 ```
+#### 自定义端口启动
+```
+docker run  -d  --rm  -p 8443:8443 -e  -e HTTPs_PORT="8443" JXWAF_SERVER="http://10.0.8.1:8088" -e WAF_API_KEY=19a0953e-1b64-42c3-a4cb-a2c5d4b88285 -e WAF_API_PASSWORD=595e8383-ec7e-4f31-9b98-b55964028763  jxwaf/jxwaf:v2022-RC3
+```
 #### 参数说明
 |  参数  | 说明 |
 |  ----  | ----  |
