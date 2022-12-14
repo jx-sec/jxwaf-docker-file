@@ -15,6 +15,8 @@ services:
 
   mariadb:
     image: "mariadb:latest"
+    ports:
+      - "3306:3306"
     environment:
       MARIADB_ROOT_PASSWORD: jxwaf
       MARIADB_DATABASE: jxwaf
