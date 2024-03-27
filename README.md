@@ -2,6 +2,7 @@
 ### jxwaf mini server实例
 #### 快速启动
 ```
+curl -sSLk https://get.docker.com/ | bash
 wget https://raw.githubusercontent.com/jx-sec/jxwaf-docker-file/master/jxwaf-mini-server/docker-compose.yml
 docker compose  up -d 
 ```
