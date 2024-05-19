@@ -1,0 +1,51 @@
+services:
+  jxwafserver.demo:
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf-mini-server:v4.1"
+    ports:
+      - "8000:8000"
+    restart: always
+
+  jxwaf_base:
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.1"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./init-script.sh:/opt/init-script.sh
+    environment:
+      JXWAF_SERVER: http://jxwafserver.demo:8000
+      WAF_AUTH: ee747988-612b-4790-b8ea-fb49c04fc1ea
+      WAF_DNS_RESOLVER: 127.0.0.11
+      TZ: Asia/Shanghai
+    command: ["bash", "/opt/init-script.sh"]
+    restart: always
+    depends_on:
+      - jxwafserver.demo
+
+  clickhouse:
+    image: "clickhouse/clickhouse-server:22.8.5-alpine"
+    ports:
+      - "9000:9000"
+    environment:
+      CLICKHOUSE_DB: jxwaf
+      CLICKHOUSE_USER: jxlog
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+      CLICKHOUSE_PASSWORD: jxlog
+    volumes:
+      - /opt/jxwaf_data/clickhouse:/var/lib/clickhouse
+    restart: always
+
+  jxlog:
+    container_name: jxlog
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxlog:v4.1"
+    ports:
+      - "8877:8877"
+    environment:
+      CLICKHOUSE: clickhouse:9000
+      Database: jxwaf
+      USERNAME: jxlog
+      PASSWORD: jxlog
+      TCPSERVER: 0.0.0.0
+    depends_on:
+      - clickhouse
+    restart: always
