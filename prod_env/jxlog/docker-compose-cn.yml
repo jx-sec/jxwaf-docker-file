@@ -14,7 +14,7 @@ services:
 
   jxlog:
     container_name: jxlog
-    image: "ccr.ccs.tencentyun.com/jxwaf/jxlog:4.1"
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxlog:v4.1"
     ports:
       - "8877:8877"
     environment:
