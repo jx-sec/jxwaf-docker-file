@@ -10,7 +10,7 @@ services:
       CLICKHOUSE_PASSWORD: jxlog
     volumes:
       - /opt/jxwaf_data/clickhouse:/var/lib/clickhouse
-    restart: always
+    restart: unless-stopped
 
   jxlog:
     container_name: jxlog
@@ -25,4 +25,4 @@ services:
       TCPSERVER: 0.0.0.0
     depends_on:
       - clickhouse
-    restart: always
+    restart: unless-stopped
