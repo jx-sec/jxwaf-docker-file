@@ -1,0 +1,6 @@
+services:
+  jxwaf_base_server:
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf-mini-server:v4.1"
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

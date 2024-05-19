@@ -1,24 +1,26 @@
-version: "3.9"
 services:
-
-  jxmini-server:
-    image: "jxwaf/jxwaf-mini-server:latest"
+  jxwafserver.demo:
+    image: "jxwaf/jxwaf-mini-server:v4.1"
     ports:
-      - "8088:80"
-    environment:
-      DBUSER: root
-      DBNAME: jxwaf
-      DBPASSWORD: jxwaf
-      DBHOST: mariadb
-      DBPORT: 3306
+      - "8000:8000"
     restart: always
 
-  mariadb:
-    image: "mariadb:latest"
+  jxwaf_base:
+    image: "jxwaf/jxwaf:v4.1"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./init-script.sh:/opt/init-script.sh
     environment:
-      MARIADB_ROOT_PASSWORD: jxwaf
-      MARIADB_DATABASE: jxwaf
+      JXWAF_SERVER: http://jxwafserver.demo:8000
+      WAF_AUTH: ee747988-612b-4790-b8ea-fb49c04fc1ea
+      WAF_DNS_RESOLVER: 127.0.0.11
+      TZ: Asia/Shanghai
+    command: ["bash", "/opt/init-script.sh"]
     restart: always
+    depends_on:
+      - jxwafserver.demo
 
   clickhouse:
     image: "clickhouse/clickhouse-server:22.8.5-alpine"
@@ -29,11 +31,13 @@ services:
       CLICKHOUSE_USER: jxlog
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
       CLICKHOUSE_PASSWORD: jxlog
+    volumes:
+      - /opt/jxwaf_data/clickhouse:/var/lib/clickhouse
     restart: always
 
   jxlog:
     container_name: jxlog
-    image: "jxwaf/jxlog:V1.2"
+    image: "jxwaf/jxlog:v4.1"
     ports:
       - "8877:8877"
     environment:
@@ -43,6 +47,5 @@ services:
       PASSWORD: jxlog
       TCPSERVER: 0.0.0.0
     depends_on:
-      clickhouse:
-        condition: service_started  
+      - clickhouse
     restart: always

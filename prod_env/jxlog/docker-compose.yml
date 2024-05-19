@@ -1,0 +1,28 @@
+services:
+  clickhouse:
+    image: "clickhouse/clickhouse-server:22.8.5-alpine"
+    ports:
+      - "9000:9000"
+    environment:
+      CLICKHOUSE_DB: jxwaf
+      CLICKHOUSE_USER: jxlog
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+      CLICKHOUSE_PASSWORD: jxlog
+    volumes:
+      - /opt/jxwaf_data/clickhouse:/var/lib/clickhouse
+    restart: unless-stopped
+
+  jxlog:
+    container_name: jxlog
+    image: "jxwaf/jxlog:v4.1"
+    ports:
+      - "8877:8877"
+    environment:
+      CLICKHOUSE: clickhouse:9000
+      Database: jxwaf
+      USERNAME: jxlog
+      PASSWORD: jxlog
+      TCPSERVER: 0.0.0.0
+    depends_on:
+      - clickhouse
+    restart: unless-stopped
