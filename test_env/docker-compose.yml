@@ -1,6 +1,6 @@
 services:
   jxwafserver.demo:
-    image: "jxwaf/jxwaf-mini-server:v4.2"
+    image: "jxwaf/jxwaf-mini-server:latest"
     ports:
       - "8000:8000"
     restart: always
