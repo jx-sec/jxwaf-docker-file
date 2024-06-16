@@ -1,6 +1,6 @@
 services:
   clickhouse:
-    image: "clickhouse/clickhouse-server:22.8.5-alpine"
+    image: "ccr.ccs.tencentyun.com/jxwaf/clickhouse-server:22.8.5-alpine"
     ports:
       - "9000:9000"
     environment:
