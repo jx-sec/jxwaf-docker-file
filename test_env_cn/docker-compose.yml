@@ -6,7 +6,7 @@ services:
     restart: always
 
   jxwaf_base:
-    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.2"
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.3"
     ports:
       - "80:80"
       - "443:443"
