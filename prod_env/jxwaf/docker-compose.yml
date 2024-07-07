@@ -1,6 +1,6 @@
 services:
   jxwaf_base:
-    image: "jxwaf/jxwaf:v4.2"
+    image: "jxwaf/jxwaf:v4.3"
     ports:
       - "80:80"
       - "443:443"
