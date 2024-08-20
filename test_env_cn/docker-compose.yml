@@ -1,12 +1,12 @@
 services:
   jxwafserver.demo:
-    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf-mini-server:v4.3"
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf-mini-server:v4.4"
     ports:
       - "8000:8000"
     restart: always
 
   jxwaf_base:
-    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.3"
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.4"
     ports:
       - "80:80"
       - "443:443"
@@ -37,7 +37,7 @@ services:
 
   jxlog:
     container_name: jxlog
-    image: "ccr.ccs.tencentyun.com/jxwaf/jxlog:v4.1"
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxlog:v4.4"
     ports:
       - "8877:8877"
     environment:

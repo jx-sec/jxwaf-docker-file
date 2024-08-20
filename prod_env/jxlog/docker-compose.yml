@@ -14,7 +14,7 @@ services:
 
   jxlog:
     container_name: jxlog
-    image: "jxwaf/jxlog:v4.1"
+    image: "jxwaf/jxlog:v4.4"
     ports:
       - "8877:8877"
     environment:
