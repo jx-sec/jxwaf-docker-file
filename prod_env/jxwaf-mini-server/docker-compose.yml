@@ -1,6 +1,6 @@
 services:
-  web:
-    image: jxwaf_server:4.5
+  jxwaf_base_server:
+    image: jxwaf/jxwaf-mini-server:v4.5
     environment:
       DATABASE_NAME: jxwaf_server
       DATABASE_USER: root
