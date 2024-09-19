@@ -12,10 +12,16 @@ services:
       DATABASE_PASSWORD: jxwaf_rootpassword
       DATABASE_HOST: mysql_db
       DATABASE_PORT: 3306
+      HTTP: 0.0.0.0:8000
+      CHDIR: /app
+      WSGI_FILE: jxwaf_base_server/wsgi.py
+      STATIC_MAP: /static=/app/static
+      PROCESSES: 4
+      THREADS: 2
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - mysql_db
 
   mysql_db:
     image: mysql:5.7
