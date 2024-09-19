@@ -1,23 +1,12 @@
 services:
   web:
-    image: jxwaf_server:4.5  
-    command: >
-      sh -c "
-      python manage.py migrate && 
-      python manage.py collectstatic --noinput && 
-      uwsgi --http $HTTP --chdir $CHDIR --wsgi-file $WSGI_FILE --static-map $STATIC_MAP --processes $PROCESSES --threads $THREADS --logto /app/app.log"
+    image: jxwaf_server:4.5
     environment:
       DATABASE_NAME: jxwaf_server
       DATABASE_USER: root
       DATABASE_PASSWORD: jxwaf_rootpassword
       DATABASE_HOST: mysql_db
       DATABASE_PORT: 3306
-      HTTP: 0.0.0.0:8000
-      CHDIR: /app
-      WSGI_FILE: jxwaf_base_server/wsgi.py
-      STATIC_MAP: /static=/app/static
-      PROCESSES: 4
-      THREADS: 2
     ports:
       - "8000:8000"
     depends_on:
