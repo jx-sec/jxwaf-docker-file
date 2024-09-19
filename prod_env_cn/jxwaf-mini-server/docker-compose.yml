@@ -7,7 +7,7 @@ services:
       DATABASE_PASSWORD: jxwaf_rootpassword
       DATABASE_HOST: mysql_db
       DATABASE_PORT: 3306
-      CUSTOM_MYSQL_DB: "true"
+      CUSTOM_MYSQL_DB: "false"
     ports:
       - "8000:8000"
     depends_on:
