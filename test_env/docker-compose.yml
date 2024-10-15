@@ -6,7 +6,7 @@ services:
     restart: always
 
   jxwaf_base:
-    image: "jxwaf/jxwaf:v4.4"
+    image: "jxwaf/jxwaf:v4.5"
     ports:
       - "80:80"
       - "443:443"
