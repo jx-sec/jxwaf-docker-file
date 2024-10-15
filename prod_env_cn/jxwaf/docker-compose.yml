@@ -1,6 +1,6 @@
 services:
   jxwaf_base:
-    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.4"
+    image: "ccr.ccs.tencentyun.com/jxwaf/jxwaf:v4.5"
     ports:
       - "80:80"
       - "443:443"
