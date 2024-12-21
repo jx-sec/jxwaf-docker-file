@@ -1,0 +1,40 @@
+services:
+  mysql_db:
+    image: ccr.ccs.tencentyun.com/jxwaf/mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 958fba75-56c6-4e81-a892-62517a9e1739
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    volumes:
+      - /opt/jxwaf_data/mysql:/var/lib/mysql
+      - ./my_custom.cnf:/etc/mysql/conf.d/my_custom.cnf  # 挂载自定义配置
+    networks:
+      jxwaf_network:
+        ipv4_address: 172.20.0.2
+
+  jxwaf_admin_server:
+    image: ccr.ccs.tencentyun.com/jxwaf/jxwaf_admin_server:v1.0
+    restart: unless-stopped
+    environment:
+      MYSQL_HOST: 172.20.0.2  # 使用 MySQL 的静态 IP
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: jxwaf_admin_server
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 958fba75-56c6-4e81-a892-62517a9e1739
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql_db
+    volumes:
+      - /opt/jxwaf_data/jxwaf_admin_server/nginx/conf/jxwaf_ssl:/opt/jxwaf_admin_server/nginx/conf/jxwaf_ssl
+    networks:
+      jxwaf_network:
+        ipv4_address: 172.20.0.3
+
+networks:
+  jxwaf_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
