@@ -8,7 +8,6 @@ services:
       MYSQL_COLLATION: utf8mb4_unicode_ci
     volumes:
       - /opt/jxwaf_data/mysql:/var/lib/mysql
-      - ./my_custom.cnf:/etc/mysql/conf.d/my_custom.cnf  # 挂载自定义配置
     networks:
       jxwaf_network:
         ipv4_address: 172.20.0.2
@@ -17,7 +16,7 @@ services:
     image: ccr.ccs.tencentyun.com/jxwaf/jxwaf_admin_server:v1.0
     restart: unless-stopped
     environment:
-      MYSQL_HOST: 172.20.0.2  # 使用 MySQL 的静态 IP
+      MYSQL_HOST: 172.20.0.2  
       MYSQL_PORT: 3306
       MYSQL_DATABASE: jxwaf_admin_server
       MYSQL_USER: root
