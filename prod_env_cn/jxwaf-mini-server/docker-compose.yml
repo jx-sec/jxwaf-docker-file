@@ -1,9 +1,6 @@
 services:
   jxwaf_base_server:
     image: ccr.ccs.tencentyun.com/jxwaf/jxwaf-mini-server:v4.8
-    command: 
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
     environment:
       DATABASE_NAME: jxwaf_server
       DATABASE_USER: root
@@ -18,6 +15,9 @@ services:
 
   mysql_db:
     image: ccr.ccs.tencentyun.com/jxwaf/mysql:5.7
+    command: 
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: jxwaf_rootpassword
       MYSQL_DATABASE: jxwaf_server
