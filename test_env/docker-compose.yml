@@ -1,6 +1,6 @@
 services:
   jxwafserver.demo:
-    image: jxwaf/jxwaf-mini-server:v4.7
+    image: jxwaf/jxwaf-mini-server:v4.8
     environment:
       DATABASE_NAME: jxwaf_server
       DATABASE_USER: root
@@ -14,6 +14,9 @@ services:
       - mysql_db
   mysql_db:
     image: mysql:5.7
+    command: 
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: jxwaf_rootpassword
       MYSQL_DATABASE: jxwaf_server
